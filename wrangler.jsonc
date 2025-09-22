@@ -7,9 +7,14 @@
 
   // Observability settings
   "observability": {
-    "logs": true,
+    "enabled": true,
+    "logs": {
+      "enabled": true
+    },
     "metrics": true,
-    "traces": true,
+    "traces": {
+      "enabled": true
+    },
     "level": "info"
   },
 
