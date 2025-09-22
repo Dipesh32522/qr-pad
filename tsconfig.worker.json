@@ -9,6 +9,5 @@
     }
   },
   "include": ["src/worker"],
-  "exclude": ["node_modules"],
-  "files": []
+  "exclude": ["node_modules"]
 }
