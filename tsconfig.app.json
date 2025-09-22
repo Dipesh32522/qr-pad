@@ -18,6 +18,5 @@
     "strict": true
   },
   "include": ["src/react-app", "src/shared"],
-  "exclude": ["node_modules"],
-  "files": []
+  "exclude": ["node_modules"]
 }
