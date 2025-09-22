@@ -1,45 +1,32 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "01996b9a-107d-78cb-99e4-2b2d6ab4847b",
-  "main": "./src/worker/index.ts",
+  "name": "my-static-site",
   "compatibility_date": "2025-06-17",
-  "compatibility_flags": ["nodejs_compat"],
+  "type": "javascript",  // or "webpack" if you plan bundling
+  "account_id": "YOUR_CLOUDFLARE_ACCOUNT_ID",
 
-  // Observability settings
+  // Workers Sites setup
+  "site": {
+    "bucket": "./",              // root folder containing index.html
+    "entry-point": "workers-site"
+  },
+
+  // Observability (optional)
   "observability": {
     "enabled": true,
-    "logs": {
-      "enabled": true
-    },
+    "logs": { "enabled": true },
     "metrics": true,
-    "traces": {
-      "enabled": true
-    },
+    "traces": { "enabled": true },
     "level": "info"
   },
 
-  // Environment variables
+  // Environment variables (optional)
   "env": {
     "production": {
-      "API_KEY": "your_production_api_key_here",
-      "OTHER_VAR": "other_value"
+      "API_KEY": "your_production_api_key_here"
     },
     "development": {
-      "API_KEY": "your_dev_api_key_here",
-      "OTHER_VAR": "other_value"
+      "API_KEY": "your_dev_api_key_here"
     }
-  },
-
-  // KV Namespaces
-  "kv_namespaces": [
-    {
-      "binding": "MY_NAMESPACE",
-      "id": "your_kv_namespace_id_here"
-    }
-  ],
-
-  // Cron triggers
-  "triggers": {
-    "crons": ["0 */6 * * *"]
   }
 }
