@@ -1,21 +1,16 @@
-{
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "01996b9a-107d-78cb-99e4-2b2d6ab4847b",
-  "main": "./src/worker/index.ts",
-  "compatibility_date": "2025-06-17",
-  "compatibility_flags": ["nodejs_compat"],
-  "observability": {
-    "enabled": true,
-  },
-  "upload_source_maps": true,
-  "assets": {
-    "not_found_handling": "single-page-application",
-  },
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "01996b9a-107d-78cb-99e4-2b2d6ab4847b",
-      "database_id": "01996b9a-107d-78cb-99e4-2b2d6ab4847b",
-    },
-  ],
-}
+name = "01996b9a-107d-78cb-99e4-2b2d6ab4847b"
+main = "src/worker/index.ts"
+compatibility_date = "2025-06-17"
+compatibility_flags = ["nodejs_compat"]
+upload_source_maps = true
+
+[observability]
+enabled = true
+
+[assets]
+not_found_handling = "single-page-application"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "01996b9a-107d-78cb-99e4-2b2d6ab4847b"
+database_id = "01996b9a-107d-78cb-99e4-2b2d6ab4847b"
