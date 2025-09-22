@@ -1,12 +1,11 @@
 {
-  "extends": "./tsconfig.node.json",
   "compilerOptions": {
-    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.worker.tsbuildinfo",
-    "types": ["vite/client", "./worker-configuration.d.ts"],
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    }
+    "outDir": "./dist/worker",
+    "module": "ESNext",
+    "target": "ESNext",
+    "strict": true,
+    "moduleResolution": "node"
   },
-  "include": ["src/worker"]
+  "include": ["src"],  // <- or "src/workers" if worker code is inside a subfolder
+  "exclude": ["node_modules"]
 }
