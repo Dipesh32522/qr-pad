@@ -1,16 +1,48 @@
+# -------------------------------
+# Final wrangler.toml for Deployment
+# -------------------------------
+
+# Basic worker info
 name = "01996b9a-107d-78cb-99e4-2b2d6ab4847b"
-main = "src/worker/index.ts"
+main = "./src/worker/index.ts"
 compatibility_date = "2025-06-17"
 compatibility_flags = ["nodejs_compat"]
-upload_source_maps = true
 
+# -------------------------------
+# Observability Settings
+# -------------------------------
 [observability]
-enabled = true
+logs = true
+metrics = true
+traces = true
+level = "info"
 
-[assets]
-not_found_handling = "single-page-application"
+# -------------------------------
+# Environment Variables (if any)
+# -------------------------------
+[env.production]
+API_KEY = "your_production_api_key_here"
+OTHER_VAR = "other_value"
 
-[[d1_databases]]
-binding = "DB"
-database_name = "01996b9a-107d-78cb-99e4-2b2d6ab4847b"
-database_id = "01996b9a-107d-78cb-99e4-2b2d6ab4847b"
+[env.development]
+API_KEY = "your_dev_api_key_here"
+OTHER_VAR = "other_value"
+
+# -------------------------------
+# KV Namespaces (if using KV)
+# -------------------------------
+[[kv_namespaces]]
+binding = "MY_NAMESPACE"
+id = "your_kv_namespace_id_here"
+
+# -------------------------------
+# Cron Triggers (if any)
+# -------------------------------
+[triggers]
+crons = ["0 */6 * * *"]  # Runs every 6 hours
+
+# -------------------------------
+# Additional Custom Configs
+# -------------------------------
+# Add any other sections needed for your Worker
+# For example Durable Objects, D1 database, etc.
