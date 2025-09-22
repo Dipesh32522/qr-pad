@@ -1,48 +1,40 @@
-# -------------------------------
-# Final wrangler.toml for Deployment
-# -------------------------------
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "01996b9a-107d-78cb-99e4-2b2d6ab4847b",
+  "main": "./src/worker/index.ts",
+  "compatibility_date": "2025-06-17",
+  "compatibility_flags": ["nodejs_compat"],
 
-# Basic worker info
-name = "01996b9a-107d-78cb-99e4-2b2d6ab4847b"
-main = "./src/worker/index.ts"
-compatibility_date = "2025-06-17"
-compatibility_flags = ["nodejs_compat"]
+  // Observability settings
+  "observability": {
+    "logs": true,
+    "metrics": true,
+    "traces": true,
+    "level": "info"
+  },
 
-# -------------------------------
-# Observability Settings
-# -------------------------------
-[observability]
-logs = true
-metrics = true
-traces = true
-level = "info"
+  // Environment variables
+  "env": {
+    "production": {
+      "API_KEY": "your_production_api_key_here",
+      "OTHER_VAR": "other_value"
+    },
+    "development": {
+      "API_KEY": "your_dev_api_key_here",
+      "OTHER_VAR": "other_value"
+    }
+  },
 
-# -------------------------------
-# Environment Variables (if any)
-# -------------------------------
-[env.production]
-API_KEY = "your_production_api_key_here"
-OTHER_VAR = "other_value"
+  // KV Namespaces
+  "kv_namespaces": [
+    {
+      "binding": "MY_NAMESPACE",
+      "id": "your_kv_namespace_id_here"
+    }
+  ],
 
-[env.development]
-API_KEY = "your_dev_api_key_here"
-OTHER_VAR = "other_value"
-
-# -------------------------------
-# KV Namespaces (if using KV)
-# -------------------------------
-[[kv_namespaces]]
-binding = "MY_NAMESPACE"
-id = "your_kv_namespace_id_here"
-
-# -------------------------------
-# Cron Triggers (if any)
-# -------------------------------
-[triggers]
-crons = ["0 */6 * * *"]  # Runs every 6 hours
-
-# -------------------------------
-# Additional Custom Configs
-# -------------------------------
-# Add any other sections needed for your Worker
-# For example Durable Objects, D1 database, etc.
+  // Cron triggers
+  "triggers": {
+    "crons": ["0 */6 * * *"]
+  }
+}
